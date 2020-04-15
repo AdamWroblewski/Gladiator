@@ -6,7 +6,7 @@ public class Assassin extends BaseGladiator {
     public Assassin(String name) {
         super(name);
     }
-
+    //TODO remove unused method/if for testing purposes than should not be on master branch
     public Assassin(int lvl, int hp, int sp, int dex, String name) {
         super(lvl, hp, sp, dex, name);
     }
@@ -26,7 +26,7 @@ public class Assassin extends BaseGladiator {
     protected Utils.Multiplier dexMultiplier() {
         return Utils.Multiplier.High;
     }
-
+    //TODO this is unnecessary
     @Override
     public String className() {
         return "Assassin";

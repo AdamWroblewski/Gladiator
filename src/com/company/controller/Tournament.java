@@ -24,7 +24,7 @@ public class Tournament {
 
         Main.view.display(
                 "Ave and welcome to the Colosseum! How many stages of the Tournament do you wish to watch?");
-
+        // TODO Here starts gladiator initialization
         // Get the stages amount
         int stages = Main.view.getNumber(Constants.MinTournamentStages, Constants.MaxTournamentStages);
         int gladiatorsAmount = (int) Math.pow(2, stages);
@@ -34,17 +34,18 @@ public class Tournament {
 
         // Generate gladiators and put them into pairs
         var gladiators = new Stack<BaseGladiator>();
-        Arrays.asList(names).
-                stream().forEach(x -> gladiators.push(generateGladiator(x)));
+        Arrays.asList(names).forEach(x -> gladiators.push(generateGladiator(x)));
         var pairs = new ArrayList<Combat>();
-
+        // TODO Here ends gladiator initialization -> move to another method for easier readability
+        //  or separate with comments
         Main.view.display("\nWe have selected Rome's finest warriors for today's Tournament!");
 
         while (gladiators.size() > 0) {
             // Since the amount of gladiator pairs is a power of two, we can safely pop 2 elements at a time
             var combatantA = gladiators.pop();
             var combatantB = gladiators.pop();
-
+            // TODO seems like you would want to use a Gladiator.toString() method here
+            // TODO don't need the className method, use combatantA.getClass().getSimpleName() instead
             Main.view.display(String.format("%s %s - %s HP, %s SP, %s DEX, %s LVL", combatantA.className(), combatantA.getName(),
                     combatantA.getHp(), combatantA.getSp(), combatantA.getDex(), combatantA.getLevel()));
             Main.view.display(String.format("%s %s - %s HP, %s SP, %s DEX, %s LVL", combatantB.className(), combatantB.getName(),
@@ -62,6 +63,7 @@ public class Tournament {
         BaseGladiator champion = SimulateCombat(root);
 
         // Announce the champion
+        //TODO don't use the getName method. use champion.getClass().getSimpleName() instead
         Main.view.display(String.format("\nThe Tournament's champion is %s %s", champion.className(), champion.getName()));
     }
 

@@ -6,7 +6,7 @@ public class Archer extends BaseGladiator {
     public Archer(String name) {
         super(name);
     }
-
+    // TODO if this is just for testing purposes, keep it out of the master branch
     public Archer(int lvl, int hp, int sp, int dex, String name) {
         super(lvl, hp, sp, dex, name);
     }
@@ -26,7 +26,7 @@ public class Archer extends BaseGladiator {
     protected Utils.Multiplier dexMultiplier() {
         return Utils.Multiplier.High;
     }
-
+    //TODO this is unnecessary
     @Override
     public String className() {
         return "Archer";

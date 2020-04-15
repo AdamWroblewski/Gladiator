@@ -12,10 +12,11 @@ public class Combat {
     // Note: All usages of View are optional (the simulation can work without initializing View module), hence the null propagation
 
     private boolean turnA;
-
+    // TODO variable names 'a' and 'b' are not explanatory enough
+    // TODO these should be private
     public BaseGladiator a;
     public BaseGladiator b;
-
+    // TODO these should be private
     public int healthA;
     public int healthB;
 
@@ -28,13 +29,17 @@ public class Combat {
 
         turnA = true;
     }
-
+// FIXME this method should simulate the combat and return the winner.
+//  It should not comment on the winner (use view) or do any other things.
     /**
      * Simulates the combat and returns
      *
      * @return winner of combat
      */
     public BaseGladiator Simulate() {
+        //FIXME Accessing the view should not be done from the model.
+        // This could maybe be a toString() method, which would be called by the controller and then
+        // sent to the view?
         if (Main.view != null) {
             Main.view.display(String.format("\nDuel %s versus %s", a.getName(), b.getName()));
             Main.view.display(String.format("%s %s - %s HP, %s SP, %s DEX,  %s LVL",
@@ -48,8 +53,10 @@ public class Combat {
         while (ongoingCombat) ongoingCombat = !SimulateTurn();
 
         var victor = healthA <= 0 ? b : a;
+        // NIT loser spelled with one 'o'
         var looser = healthA <= 0 ? a : b;
-
+        // TODO don't call view methods from the model. maybe make this into a method
+        //  that returns a String?
         if (Main.view != null) {
             Main.view.display(String.format(
                     "\n%s %s has died, %s %s wins!", looser.className(), looser.getName(), victor.className(), victor.getName()));
@@ -57,7 +64,10 @@ public class Combat {
         // Return the victor of this combat
         return victor;
     }
-
+// TODO This method doesn't only simulate the turn of a combat,
+//  but also dictates the rules of this turn (like who is attacking and who is defending).
+//  Separate into methods: make one that receives two gladiators and simulates the fight and another
+//  that changes turns and calls it again.
     /**
      * Simulates a single turn of combat
      *
@@ -68,7 +78,7 @@ public class Combat {
         var enemy = turnA ? b : a;
 
         var chancePercentage = CalculateHitChance(current, enemy);
-        var randomChance = Utils.random.nextInt(101);
+        var randomChance = Utils.random.nextInt(101); // TODO magic number -> comment
 
         if (randomChance <= chancePercentage) {
             // Hit
@@ -103,9 +113,9 @@ public class Combat {
     public int CalculateHitChance(BaseGladiator current, BaseGladiator enemy) {
         int currentDex = current.getDex();
         int enemyDex = enemy.getDex();
-        int unclapmedChance = currentDex - enemyDex;
+        int unclapmedChance = currentDex - enemyDex; // NIT what is unclapmed?
 
-        return Math.max(10, Math.min(unclapmedChance, 100));
+        return Math.max(10, Math.min(unclapmedChance, 100)); // NIT fix magic numbers -> comment
     }
 
     /// <summary>

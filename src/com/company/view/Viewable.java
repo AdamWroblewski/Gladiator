@@ -12,10 +12,10 @@ public interface Viewable {
     void display(String text);
 
     /**
-     *
-     * @param min
-     * @param max
-     * @return
+     * //TODO javadoc, what should this method do?
+     * @param min //TODO
+     * @param max //TODO
+     * @return //TODO
      */
     int getNumber(int min, int max);
 }

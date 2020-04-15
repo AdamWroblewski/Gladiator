@@ -40,7 +40,7 @@ public abstract class BaseGladiator {
         // Assign name
         this.name = name;
     }
-
+    // TODO if this is just for testing purposes, keep it on a separate branch, not on the master one
     /**
      * Gladiator constructor with parameters, for testing purposes
      *
@@ -58,7 +58,7 @@ public abstract class BaseGladiator {
         this.name = name;
     }
 
-    /**
+    /** //TODO method names should have a verb in them (like "get" "set" "create" etc)
      * @return HP multiplier of this gladiator class
      */
     protected abstract Utils.Multiplier hpMultiplier();
@@ -89,21 +89,21 @@ public abstract class BaseGladiator {
      * @return Amount of Health Points of this Gladiator
      */
     public int getHp() {
-        return (int) (baseHp * level * Utils.getValue(hpMultiplier()));
+        return (int) (baseHp * level * Utils.Multiplier.getValue(hpMultiplier()));
     }
 
     /**
      * @return Amount of Strength Points of this Gladiator
      */
     public int getSp() {
-        return (int) (baseSp * level * Utils.getValue(spMultiplier()));
+        return (int) (baseSp * level * Utils.Multiplier.getValue(spMultiplier()));
     }
 
     /**
      * @return Amount of Dexterity Points of this Gladiator
      */
     public int getDex() {
-        return (int) (baseDex * level * Utils.getValue(dexMultiplier()));
+        return (int) (baseDex * level * Utils.Multiplier.getValue(dexMultiplier()));
     }
 
     /**
@@ -116,4 +116,6 @@ public abstract class BaseGladiator {
     public String getName() {
         return name;
     }
+
+    // TODO might want to implement a toString() method
 }

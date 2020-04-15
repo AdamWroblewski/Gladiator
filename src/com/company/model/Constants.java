@@ -18,7 +18,7 @@ public class Constants {
 
     public static final int MinTournamentStages = 1;
     public static final int MaxTournamentStages = 10;
-
+    //FIXME unused constants
     public static final int MinHitChance = 25;
     public static final int MaxHitChance = 100;
 

@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class NamesGenerator {
     private static Random random = new Random();
-
+    //FIXME unused method
     public static String getName() {
         List<String> lines = null;
         try {
@@ -18,6 +18,7 @@ public class NamesGenerator {
             e.printStackTrace();
         }
 
+        assert lines != null;
         return lines.get(random.nextInt(lines.size()));
     }
 
@@ -29,10 +30,13 @@ public class NamesGenerator {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        // FIXME unused variable
         var list = new ArrayList<String>();
 
-        for (var i = 0; i < amount; i++)
+        for (var i = 0; i < amount; i++) {
+            assert lines != null;
             names[i] = lines.get(random.nextInt(lines.size()));
+        }
 
         return names;
     }
